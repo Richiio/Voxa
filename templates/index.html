@@ -2,68 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voxa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        body { font-family: 'Poppins', sans-serif; text-align: center; padding: 50px; }
-        .tabs button { margin: 0 10px; padding: 10px 20px; }
-        .upload-box { border: 1px solid #333; padding: 50px; margin: 30px auto; width: 60%; border-radius: 10px; }
-        .status { margin-top: 10px; font-style: italic; color: grey; }
-        .btn { background: #27327d; color: white; padding: 10px 25px; border: none; border-radius: 5px; cursor: pointer; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    <h1>Voxa turns your voice into words—instantly, accurately, effortlessly.</h1>
-    <p>From meetings to memos, Voxa captures every word so you never miss a detail.</p>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">Voxa</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="/templates/about.html">About</a>
+                <a href="/templates/contact.html">Contact Us</a>
+            </div>
 
-    <div class="tabs">
-        <button onclick="setMode('image')">Image</button>
-        <button onclick="setMode('audio')" class="active">Audio</button>
-        <button onclick="setMode('video')">Video</button>
-    </div>
+            <div class="auth-buttons">
+                <a href="#" class="signin">Sign in</a>
+                <a href="#" class="signup">Sign up</a>
+              </div>
 
-    <div class="upload-box">
-        <input type="file" id="fileInput" />
-        <p class="status" id="statusText">Upload your <span id="modeLabel">Audio</span> file here</p>
-    </div>
+            <button class="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
 
-    <button class="btn" onclick="extractText()">Extract Text</button>
+    <main>
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Voxa turns your voice into words—instantly, accurately, effortlessly.</h1>
+                <p class="hero-subtitle">From meetings to memos, Voxa captures every word so you never miss a detail.</p>
+            </div>
 
-    <div id="output"></div>
-
-    <script>
-        let mode = "audio";
-        function setMode(newMode) {
-            mode = newMode;
-            document.getElementById("modeLabel").textContent = newMode.charAt(0).toUpperCase() + newMode.slice(1);
-        }
-
-        function extractText() {
-            const fileInput = document.getElementById("fileInput");
-            if (!fileInput.files.length) return alert("Please upload a file first!");
-
-            const file = fileInput.files[0];
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("mode", mode);
-
-            document.getElementById("statusText").innerText = "Uploading...";
-
-            fetch("/upload", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("statusText").innerText = "Upload completed.";
-                document.getElementById("output").innerText = data.text;
-            })
-            .catch(err => {
-                document.getElementById("statusText").innerText = "Error occurred.";
-                console.error(err);
-            });
-        }
-    </script>
+        <div class="tabs">
+            <button onclick="setMode('image')">Image</button>
+            <button onclick="setMode('audio')" class="active">Audio</button>
+            <button onclick="setMode('video')">Video</button>
+        </div>
+    
+        <div class="upload-box">
+            <input type="file" id="fileInput" />
+            <p class="status" id="statusText">Upload your <span id="modeLabel">Audio</span> file here</p>
+        </div>
+    
+        <button class="btn" onclick="extractText()">Extract Text</button>
+    
+        <div id="output"></div>
+    
+    <script src="/static/script.js"></script>
+   
 </body>
 </html>
