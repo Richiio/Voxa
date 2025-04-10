@@ -1,0 +1,102 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #fff;
+    color: #0d0d0d;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  /* Header */
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 1rem;
+  }
+  
+  .tabs button {
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 8px 20px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .tabs button:hover,
+  .tabs button.active {
+    border: 1px solid #27327d;
+    color: white;
+    background-color: #27327d;
+  }
+  
+  /* Upload box */
+  .upload-box {
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 50px;
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    position: relative;
+  }
+  
+  .upload-box input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .status {
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 8px;
+  }
+  
+  /* Buttons */
+  .btn {
+    background-color: #27327d;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .btn:hover {
+    background-color: #1d255f;
+  }
+  
+  /* Output section */
+  #output {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: #222;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: pre-wrap;
+  }
+  
